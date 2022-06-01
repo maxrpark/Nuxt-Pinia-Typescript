@@ -13,8 +13,6 @@
 
 <script setup lang="ts">
 import { useStore } from '~~/store/useStore';
-import { actionType } from '@/ts/store/actionType';
-
 let store = useStore();
 
 const handleSubmit = () => {
@@ -22,7 +20,6 @@ const handleSubmit = () => {
   store.displayAlert();
 };
 
-onMounted(() => store.getLocalStorage());
 const updateMessage = (e: any) => {
   store.ItemValue = e.target.value;
 };

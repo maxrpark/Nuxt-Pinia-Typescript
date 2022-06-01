@@ -31,24 +31,12 @@
 import TodoItem from '../components/TodoItem.vue';
 import Alert from '../components/Alert.vue';
 import Form from '../components/Form.vue';
-import { actionType } from '../ts/store/actionType';
 import { useStore } from '~~/store/useStore';
 const store = useStore();
-
+onMounted(() => store.getLocalStorage());
 const removeAll = () => {
   store.removeAll();
   store.displayAlert();
-};
-
-const getLocalStorage = () => {
-  let todoList = localStorage.getItem('PiniatodoListTs');
-  if (todoList) {
-    return (store.todoList = JSON.parse(
-      localStorage.getItem('PiniatodoListTs') as string
-    ));
-  } else {
-    return [];
-  }
 };
 </script>
 

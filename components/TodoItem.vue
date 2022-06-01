@@ -45,7 +45,7 @@
 <script setup lang="ts">
 import { Item } from '../ts/interfaces';
 import { useStore } from '~~/store/useStore';
-import { actionType } from '@/ts/store/actionType';
+
 const store = useStore();
 interface Props {
   item: Item;

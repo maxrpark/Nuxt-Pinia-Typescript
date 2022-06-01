@@ -48,9 +48,6 @@ export const useStore = defineStore({
         return (this.todoList = []);
       }
     },
-    UPDATE_VALUE(value: string) {
-      this.ItemValue = value;
-    },
     handleSubmit() {
       if (this.ItemValue && this.ItemValue.trim() !== '') {
         if (!this.isEditing) {
@@ -68,7 +65,7 @@ export const useStore = defineStore({
           this.alertMessege = alertMessege;
           this.showAlert = true;
         } else {
-          const tempList = this.todoList.map((item: any) => {
+          const tempList = this.todoList.map((item: Item) => {
             if (item.id === this.ItemID) {
               return { ...item, value: this.ItemValue };
             }
@@ -89,7 +86,7 @@ export const useStore = defineStore({
       }
     },
     editItem(id: string) {
-      const specificItem = this.todoList.find((item: any) => item.id === id);
+      const specificItem = this.todoList.find((item: Item) => item.id === id);
       const alertMessege = {
         messege: 'Editing...',
         type: 'warning',
@@ -107,8 +104,10 @@ export const useStore = defineStore({
             messege: 'Task Completed',
             type: 'success',
           };
-          this.alertMessege = alertMessege;
-          this.showAlert = true;
+          if (!item.isComplete) {
+            this.alertMessege = alertMessege;
+            this.showAlert = true;
+          }
           return { ...item, isComplete: !item.isComplete };
         }
         return item;
@@ -143,11 +142,11 @@ export const useStore = defineStore({
       saveLocalStorage(this.todoList);
     },
     displayAlert() {
+      clearTimeout(timeOut);
       if (this.alertMessege.messege !== 'Editing...') {
         timeOut = window.setTimeout(() => {
           this.showAlert = false;
         }, 1500);
-        return () => clearTimeout(timeOut);
       }
     },
   },
