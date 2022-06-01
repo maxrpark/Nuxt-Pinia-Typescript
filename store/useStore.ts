@@ -1,7 +1,6 @@
-// stores/counter.js
 import { defineStore } from 'pinia';
 import { Item, Project } from '../ts/interfaces';
-import axios from 'axios';
+
 let url = 'https://assitant-app.netlify.app/api/projects-api';
 const saveLocalStorage = (todoList: Item[]) => {
   localStorage.setItem('PiniatodoListTs', JSON.stringify(todoList));
@@ -32,8 +31,8 @@ export const useStore = defineStore({
   actions: {
     async getProjects() {
       try {
-        const response = await axios.get(url);
-        const data = await response.data;
+        const response = await fetch(url);
+        const data = await response.json();
         this.projects = data;
       } catch (error) {
         console.log(error);
