@@ -1,4 +1,4 @@
-import { defineNuxtConfig } from 'nuxt'
+import { defineNuxtConfig } from 'nuxt';
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
@@ -6,15 +6,12 @@ export default defineNuxtConfig({
     strict: true,
     typeCheck: true,
   },
-   buildModules: [
+  buildModules: [
     // Nuxt 2 only:
     // https://composition-api.nuxtjs.org/getting-started/setup#quick-start
     // '@nuxtjs/composition-api/module',
     '@pinia/nuxt',
   ],
 
-    css: [
-    '@/assets/app.css',
-  ]
-
-})
+  css: ['@/assets/app.css'],
+});
