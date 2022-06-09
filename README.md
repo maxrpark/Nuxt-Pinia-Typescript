@@ -15,4 +15,4 @@ I hope, I keep learning new onces in the future so this project expects more and
 ## Visit the website
 
 You can take a look at the website by clicking the next link
-[Assitant Svelte App](https://nuxt-pinia-typescript.netlify.app/).
+[Assitant Nuxt-Pinia-Typescript App](https://nuxt-pinia-typescript.netlify.app/).
